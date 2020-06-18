@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-sm-12 col-md-9 col-lg-6">
+
+
+      <form [formGroup]='formUser' (submit)='SendData($event)' >
+        <input formControlName='name' type="text" class="mt-2 form-control" placeholder="Enter name"/>
+        <input formControlName='surname' type="text" class="mt-2 form-control" placeholder="Enter surname"/>
+        <input formControlName='email' type="email" class="mt-2 form-control" placeholder="Enter email"/>
+        <select formControlName='sub' class="my-2 form-control">
+          <option value="1">Value 1</option>
+          <option value="2">Value 2</option>
+          <option value="3">Value 3</option>
+        </select>
+        <input formControlName='gender' type="radio" name="gender" value="M" /> Masculino<br>
+        <input formControlName='gender' type="radio" name="gender" value="F" /> Femenino<br>
+        <input formControlName='gender' type="radio" name="gender" value="O" /> Otros
+        <input formControlName='pass' type="password" class="my-2 form-control" placeholder="password"/>
+        <small> {{ getpass.value.length }}/10 </small>
+        <span *ngIf="getpass.errors && getpass.touched">
+          <small *ngIf="getpass.hasError('minlength')" >Debe tener minino 10 caracteres</small>
+          <small *ngIf="getpass.hasError('required')" >Este campo es obligatorio</small>
+        </span>
+
+        <button [disabled]='formUser.invalid' type="submit" class="mt-2 btn btn-block btn-primary">SendData</button>
+      </form>
+
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-sm-12 col-md-6 col-lg-8">
+      <p class="text-center display-4">Email:</p>
+      <input [formControl]='email' type="email" class="form-control">
+      <div *ngIf="email.errors && email.touched" >
+        <small *ngIf="email.hasError('required')" > Este campo es requerido </small>
+        <small *ngIf="email.hasError('maxlength')" > Maxiomo 20 caracteres </small>
+        <small *ngIf="email.hasError('minlength')" > Minimo 5 caracteres </small>
+        <small *ngIf="email.hasError('email')" > Debe ser un email </small>
+      </div>
+      <button (click)='getEmail($event)' [disabled]='email.invalid' class="mt-2 btn btn-block btn-primary">
+        Send Data
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-sm-12 col-md-6 col-lg-8">
+      <p class="text-center display-4">Number:</p>
+      <input [formControl]='numberForm' type="text" class="form-control"/>
+      <span *ngIf="numberForm.errors && numberForm.touched">
+        <small *ngIf="numberForm.hasError('required')" >Este campo es obligatorio</small>
+        <small *ngIf="numberForm.hasError('maxlength')" >Maximo 9 numeros</small>
+      </span>
+      <button (click)='getNumber($event)' [disabled]='numberForm.invalid' class="mt-2 btn btn-block btn-primary">
+        Send Data
+      </button>
+    </div>
+  </div>
+</div>
